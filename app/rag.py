@@ -1,3 +1,4 @@
+import certifi
 import os
 from typing import List, Tuple
 
@@ -34,7 +35,12 @@ print("OPENAI_API_KEY exists:", bool(OPENAI_API_KEY))
 print("MONGODB_URI exists:", bool(MONGODB_URI))
 print("============================\n")
 
-client = MongoClient(MONGODB_URI)
+client = MongoClient(
+    MONGODB_URI,
+    tls=True,
+    tlsCAFile=certifi.where(),
+    serverSelectionTimeoutMS=30000,
+)
 collection = client[MONGODB_DB][MONGODB_COLLECTION]
 
 try:
