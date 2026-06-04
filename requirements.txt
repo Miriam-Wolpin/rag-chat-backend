@@ -9,3 +9,5 @@ langchain==0.3.13
 langchain-openai==0.2.14
 langchain-mongodb==0.2.0
 langchain-core==0.3.28
+
+certifi==2025.1.31
